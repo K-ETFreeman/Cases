@@ -3421,6 +3421,10 @@ button.swiper-pagination-bullet {
     font-size: calc(50px + (100vw - 320px) * (0.13449));
   }
 
+  .cases {
+    margin-top: calc(30px + (100vw - 320px) * (0.04464));
+  }
+
   .cases__header h1 {
     font-size: calc(24px + (100vw - 320px) * (0.02679));
   }
