@@ -255,7 +255,7 @@ document.querySelectorAll('.video').forEach(function (item) {
   });
   window.addEventListener('scroll', function () {
     if (!visible && prevScroll || pageYOffset + window.innerHeight >= document.body.scrollHeight - 30) {
-      if (pageYOffset < prevScroll && pageYOffset > window.innerHeight * 1.5 || pageYOffset + window.innerHeight >= document.body.scrollHeight - 30) {
+      if (pageYOffset < prevScroll && pageYOffset > window.innerHeight || pageYOffset + window.innerHeight >= document.body.scrollHeight - 30) {
         visible = true;
         button.classList.add('visible');
       } else {
