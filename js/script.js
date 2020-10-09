@@ -157,8 +157,42 @@ document.querySelectorAll('.case__container .swiper-container').forEach(function
 });
 new Swiper('.tags .swiper-container', {
   slidesPerView: 'auto',
-  loop: true,
-  loopedSlides: 15,
+  slidesOffsetBefore: 20,
+  breakpoints: {
+    1920: {
+      slidesOffsetBefore: 20
+    },
+    1805: {
+      slidesOffsetBefore: 19
+    },
+    1690: {
+      slidesOffsetBefore: 18
+    },
+    1575: {
+      slidesOffsetBefore: 17
+    },
+    1460: {
+      slidesOffsetBefore: 16
+    },
+    1344: {
+      slidesOffsetBefore: 15
+    },
+    1229: {
+      slidesOffsetBefore: 14
+    },
+    1114: {
+      slidesOffsetBefore: 13
+    },
+    999: {
+      slidesOffsetBefore: 12
+    },
+    884: {
+      slidesOffsetBefore: 11
+    },
+    320: {
+      slidesOffsetBefore: 10
+    }
+  },
   navigation: {
     nextEl: '.tags__next',
     prevEl: '.tags__prev'
