@@ -52,6 +52,104 @@ document.querySelectorAll('.interactive-trigger').forEach(function (item) {
   });
 });
 ;
+{
+  var setCoords = function setCoords(item, parCoords) {
+    item.style.setProperty('top', parCoords.bottom - 3 + 'px');
+    if (parCoords.left + item.offsetWidth < window.innerWidth) item.style.setProperty('left', parCoords.left + 'px');else item.style.setProperty('right', '0px');
+  };
+
+  document.querySelectorAll('.simplepopup').forEach(function (item) {
+    var trigger = item.getAttribute('data-trigger');
+    var parent = item.parentNode;
+    item.remove();
+    document.body.appendChild(item);
+
+    if (trigger == 'click') {
+      parent.onclick = function (e) {
+        e.preventDefault();
+        if (item.classList.contains('active')) return item.classList.remove('active');
+        setCoords(item, parent.getBoundingClientRect(), parent);
+        item.classList.add('active');
+      };
+    }
+
+    if (trigger == 'hover') {
+      parent.onclick = function (e) {
+        if (new Date().getTime() - showtime < 50) e.preventDefault();
+      };
+
+      var hovP = false,
+          hovI = false,
+          showtime = 0;
+
+      var hide = function hide() {
+        item.classList.remove('active');
+        parent.classList.remove('active');
+        showtime = 0;
+      };
+
+      var show = function show() {
+        item.classList.add('active');
+        parent.classList.add('active');
+        setCoords(item, parent.children[0].getBoundingClientRect(), parent, 500);
+        showtime = new Date().getTime();
+      };
+
+      var delayhide = function delayhide() {
+        return setTimeout(function () {
+          return !hovP && !hovI ? hide() : 0;
+        }, 0);
+      };
+
+      parent.onmouseenter = function () {
+        if (window.innerWidth < 1024) return;
+        hovP = true;
+        if (!item.classList.contains('active')) show();
+      };
+
+      parent.onmouseleave = function () {
+        if (window.innerWidth < 1024) return;
+        hovP = false;
+        if (!hovP && !hovI) delayhide();
+      };
+
+      item.onmouseenter = function () {
+        if (window.innerWidth < 1024) return;
+        hovI = true;
+        if (!item.classList.contains('active')) show();
+      };
+
+      item.onmouseleave = function () {
+        if (window.innerWidth < 1024) return;
+        hovI = false;
+        if (!hovP && !hovI) delayhide();
+      };
+    }
+  });
+  window.addEventListener('resize', function () {
+    return document.querySelectorAll('.simplepopup').forEach(function (item) {
+      item.classList.remove('active');
+      item.style.removeProperty('right');
+      item.style.removeProperty('left');
+      item.style.removeProperty('top');
+    });
+  });
+}
+;
+var burger = document.querySelector('.burger');
+
+burger.onclick = function (e) {
+  if (burger.classList.contains('active')) {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    });
+    bodyScrollLock.disableBodyScroll(document.body);
+  } else {
+    bodyScrollLock.enableBodyScroll(document.body);
+  }
+};
+
 var imagepopupcontainer = document.querySelector('.imagepopup');
 var imgpopuped = false,
     imgpopupposition = 0;
@@ -141,6 +239,36 @@ document.querySelectorAll('.video').forEach(function (item) {
     };
   };
 });
+;
+{
+  var button = document.getElementById('up');
+  var prevScroll,
+      visible = false;
+  button.addEventListener('click', function () {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  window.addEventListener('load', function () {
+    prevScroll = pageYOffset;
+  });
+  window.addEventListener('scroll', function () {
+    if (!visible && prevScroll || pageYOffset + window.innerHeight >= document.body.scrollHeight - 30) {
+      if (pageYOffset < prevScroll && pageYOffset > window.innerHeight * 1.5 || pageYOffset + window.innerHeight >= document.body.scrollHeight - 30) {
+        visible = true;
+        button.classList.add('visible');
+      } else {
+        if (pageYOffset != prevScroll) {
+          visible = false;
+          button.classList.remove('visible');
+        }
+      }
+    } else visible = false;
+
+    prevScroll = pageYOffset;
+  });
+}
 ;
 document.querySelectorAll('.case__container .swiper-container').forEach(function (item) {
   return item = new Swiper(item, {
