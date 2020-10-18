@@ -2783,6 +2783,8 @@ button.swiper-pagination-bullet {
 
 .footer__container-nav ul {
   height: 150px;
+  min-height: 150px;
+  width: 270px;
   max-width: calc(100% - 20px);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2800,12 +2802,21 @@ button.swiper-pagination-bullet {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-  padding-left: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer__container-nav ul li:nth-child(n+5) {
+  padding-left: 25px;
 }
 
 .footer__container-nav ul li a {
   white-space: nowrap;
-  font-size: 18px;
+  font-size: 16px;
   color: #3e3f43;
 }
 
@@ -2974,12 +2985,6 @@ button.swiper-pagination-bullet {
   }
 }
 
-@media screen and (min-width: 1023px) {
-  .footer__container-nav ul {
-    width: 300px;
-  }
-}
-
 @media screen and (min-width: 1024px) {
   .header .orange.active a {
     -webkit-transform: translateY(3px);
@@ -3088,6 +3093,10 @@ button.swiper-pagination-bullet {
     -webkit-transform: scaleY(1);
         -ms-transform: scaleY(1);
             transform: scaleY(1);
+  }
+
+  .footer__container-nav ul {
+    height: calc(100% - 20px);
   }
 }
 
@@ -3516,12 +3525,6 @@ button.swiper-pagination-bullet {
     height: -moz-min-content;
     height: min-content;
   }
-
-  .footer__container-nav ul {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
 }
 
 @media screen and (max-width: 550px) {
@@ -3878,8 +3881,8 @@ button.swiper-pagination-bullet {
     font-size: calc(10.5px + (100vw - 1440px) * (0.00729));
   }
 
-  .footer__container-nav ul {
-    width: calc(225px + (100vw - 1440px) * (0.15625));
+  .footer__container-nav ul li a {
+    font-size: calc(14px + (100vw - 1440px) * (0.00417));
   }
 
   .footer__infocontainer {
@@ -3903,7 +3906,7 @@ button.swiper-pagination-bullet {
   }
 
   .footer__infoblock-text {
-    font-size: calc(13px + (100vw - 1440px) * (0.00625));
+    font-size: calc(12px + (100vw - 1440px) * (0.00833));
   }
 
   .footer__container-question {
@@ -4464,10 +4467,6 @@ button.swiper-pagination-bullet {
     font-size: 10.5px;
   }
 
-  .footer__container-nav ul {
-    width: 225px;
-  }
-
   .footer__infocontainer {
     padding-bottom: 7.5px;
   }
@@ -4482,6 +4481,10 @@ button.swiper-pagination-bullet {
 
   .footer__infoblock svg {
     top: 2.25px;
+  }
+
+  .footer__infoblock-text {
+    font-size: 12px;
   }
 
   .footer__question-title {
@@ -4672,9 +4675,47 @@ button.swiper-pagination-bullet {
   }
 }
 
+@media screen and (max-width: 600px) and (max-width: 768px) and (min-width: 320px) {
+  .footer__container-nav {
+    padding-bottom: calc(15px + (100vw - 320px) * (0.07813));
+  }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1630px) {
+  .footer__container-nav ul {
+    width: calc(250px + (100vw - 1630px) * (0.06897));
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1630px) {
+  .footer__container-nav ul {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 1024px) {
+  .footer__container-nav ul li:nth-child(n+5) {
+    padding-left: calc(10px + (100vw - 1024px) * (0.05435));
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+  .footer__container-nav ul li a {
+    font-size: 14px;
+  }
+
+  .footer__infocontainer {
+    width: 217.5px;
+  }
+
+  .footer__container-question {
+    width: 225px;
+  }
+}
+
 @media screen and (max-width: 900px) and (min-width: 601px) {
   .footer__container-nav ul li a {
-    font-size: calc(16px + (100vw - 601px) * (0.00669));
+    font-size: calc(15px + (100vw - 601px) * (0.00334));
   }
 
   .footer__container-nav ul li a {
@@ -4692,7 +4733,7 @@ button.swiper-pagination-bullet {
 
 @media screen and (max-width: 600px) and (min-width: 320px) {
   .footer__container-nav ul li a {
-    font-size: calc(16px + (100vw - 320px) * (0.00714));
+    font-size: calc(15px + (100vw - 320px) * (0.00357));
   }
 
   .footer__container-nav ul li a {
@@ -4709,21 +4750,5 @@ button.swiper-pagination-bullet {
 
   .footer__infoblock-text {
     padding-left: calc(20px + (100vw - 320px) * (0.01786));
-  }
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-  .footer__infocontainer {
-    width: 217.5px;
-  }
-
-  .footer__container-question {
-    width: 225px;
-  }
-}
-
-@media screen and (min-width: 1023px) and (max-width: 1440px) {
-  .footer__infoblock-text {
-    font-size: 13px;
   }
 }
